@@ -43,7 +43,7 @@ int main() {
                 mask = 1;
                 status();
                 puts("\nDigite qual Armário Liberar [0-7]:");
-                scanf("%d", &choice);
+                scanf("%hhd", &choice);
                 mask = (mask<<choice);
                 if ( (armario ^ mask) > armario) {
                     printf("\n-> Armário %d já está Vazio.\n", choice);
