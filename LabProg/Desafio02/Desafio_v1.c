@@ -19,8 +19,6 @@ void gerarMemoria(struct Memoria *, int);
 void gerarProcesso(struct Memoria *);
 int gerarIntervalo(struct Memoria *);
 void exibirMemoria(struct Memoria *);
-void imprimir(struct Memoria *);
-
 
 int main() {
     srand(time(NULL));
