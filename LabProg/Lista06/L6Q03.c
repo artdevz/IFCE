@@ -1,30 +1,42 @@
-//L6-Q1:
+//L6-Q3:
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-#define QNT_NOTAS 2
+#define MAXRANGE 100
 
-struct Aluno {
-    float notas[QNT_NOTAS];    
+struct Info {
+    int* pontArray;
+    int quant;
     float media;
 };
 
 int main() {
     
-    struct Aluno aluno;
-    float soma = 0;
-    for (int i = 0; i < QNT_NOTAS; i++) {
+    srand(time(NULL));
 
-        float nota;
-        printf("Digite a %dª Nota: ", i+1);
-        scanf("%f", &nota);
-        
-        aluno.notas[i] = nota;
-        soma += nota;
-    }
-    aluno.media = soma/QNT_NOTAS;
+    int elementos;
+    puts("Digite Quantos Elementos Deseja: ");
+    scanf("%d", &elementos);
+
+    int* vetor = malloc(sizeof(int) * elementos);
+
+    int media = 0;
+    for (int i = 0; i < elementos; i++) {
+
+        *(vetor+i) = rand() % MAXRANGE; 
+        printf("%d\n", *(vetor+i)); 
+        media += *(vetor+i);
     
-    printf("%.2f , %.2f -> %.2f\n", aluno.notas[0], aluno.notas[1], aluno.media);
+    }
+    
+    struct Info array;
+    array.pontArray = vetor;
+    array.quant = elementos;
+    array.media = ( (float)media / elementos);
 
+    printf("-> [%p] \nQuantidade de Elementos: %d\nMédia: %.1f", array.pontArray, array.quant, array.media);
+    
     return 0;
 }
