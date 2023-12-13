@@ -1,30 +1,45 @@
-//L6-Q1:
+//L6-Q2:
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-#define QNT_NOTAS 2
+#define MAXCHAR 50
+#define MAXRANGE 10000
 
-struct Aluno {
-    float notas[QNT_NOTAS];    
-    float media;
+struct estoque {
+    char* nomePeca;
+    int id;
+    float price;
+    int codPedido;
 };
 
 int main() {
     
-    struct Aluno aluno;
-    float soma = 0;
-    for (int i = 0; i < QNT_NOTAS; i++) {
+    srand(time(NULL));
 
-        float nota;
-        printf("Digite a %dª Nota: ", i+1);
-        scanf("%f", &nota);
-        
-        aluno.notas[i] = nota;
-        soma += nota;
-    }
-    aluno.media = soma/QNT_NOTAS;
-    
-    printf("%.2f , %.2f -> %.2f\n", aluno.notas[0], aluno.notas[1], aluno.media);
+    struct estoque Peca;
+
+    char nome[MAXCHAR];
+    puts("Digite o Nome da Peça: ");
+    fgets(nome, MAXCHAR, stdin);
+
+    float preco;
+    puts("Digite o Preço da Peça: ");
+    scanf("%f", &preco);
+
+    int code = rand() % MAXRANGE;
+
+    Peca.nomePeca = nome;
+    Peca.id = 1000+1;
+    Peca.price = preco;
+    Peca.codPedido = code;
+
+    printf("\nNome da Peça: ");
+    for (int i = 0; (*(Peca.nomePeca+i)) != '\0'; i++) printf("%c", *(Peca.nomePeca+i));    
+    printf("ID: #%d\n", Peca.id);
+    printf("Preço: R$ %.2f\n", Peca.price);
+    printf("Número do Pedido: #%.4d\n\n", Peca.codPedido); 
 
     return 0;
 }
