@@ -1,29 +1,26 @@
 //L7-Q2:
 
+// AINDA VOU TERMINAR...
+
 #include <stdio.h>
 #include <stdlib.h>
 
 #define TAMREGISTER 100
-#define TAM 3
+#define MAXCHAR 30
 
 int main() {
 
     FILE *fp;
-    char num[TAM];
+    fp = fopen("hardware.dat", "w");
 
-    fp = fopen(hardware.txt, "w");
-    if (fp == NULL) {
-        puts("ERRO! Arquivo não pode ser Aberto.");
+    if (!fp) {
+        puts("[ERRO] Não foi possível Abrir o Arquivo.");
         exit(1);
     }
 
     for (int i = 0; i < TAMREGISTER; i++) {
-        
-        fwrite(&i, sizeof(int), 1, fp);
 
-        /*int num = i;
-        putw(num, fp);
-        putc("\n", fp);*/
+        fprintf(fp, "#%d -> Vazio\n", i+1);
 
     }
 
