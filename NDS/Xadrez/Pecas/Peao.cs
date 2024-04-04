@@ -23,7 +23,7 @@ class Peao {
             positionY = 6;
             Peao.quantidadeBranco++;
             Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "P");
+            t.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "\u265f");
                                     
         }
         else
@@ -32,8 +32,7 @@ class Peao {
             positionY = 1;
             Peao.quantidadePreto++;            
             Tabuleiro t = new Tabuleiro();
-            Console.WriteLine($"{positionY}, {positionX}");
-            t.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "P");
+            t.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "\u2659");
 
         }
     }
@@ -51,7 +50,7 @@ class Peao {
             if (MoverPeaoBranco(posX, posY) == true) {
                 Console.WriteLine("Movimento Permitido");
                 Tabuleiro t = new Tabuleiro();
-                t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "P");
+                t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2659");
                 this.positionX = posX;
                 this.positionY = posY;
             } else {
@@ -62,7 +61,7 @@ class Peao {
             if (MoverPeaoPreto(posX, posY) == true) {
                 Console.WriteLine("Movimento Permitido");
                 Tabuleiro t = new Tabuleiro();
-                t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "P");
+                t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265f");
                 this.positionX = posX;
                 this.positionY = posY;
             } else {
