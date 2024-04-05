@@ -10,13 +10,14 @@ class Program {
         chess.gerarTabuleiro();
         
         //IniciarJogo(){
+        
         List<Peao> peoes = new List<Peao>();
         for (int i = 0; i < 16; i++) {
             bool cor =  (i % 2 == 0)? true : false;
             Peao peao = new Peao(cor, true);
             peoes.Add(peao);
         }
-        
+    
         List<Bispo> bispos = new List<Bispo>();
         List<Cavalo> cavalos = new List<Cavalo>();
         List<Torre> torres = new List<Torre>();
@@ -42,8 +43,9 @@ class Program {
             reis.Add(rei);
         }
         //IniciarJogo()}        
-        chess.exibirTabuleiro();        
-        torres[1].MoverTorre(false, 0, 6); // (1)        
+        chess.exibirTabuleiro();
+        torres[0].MoverTorre(true, 0, 4);     
+        torres[1].MoverTorre(false, 0, 6); // Quando não há peões, a Torre Preta não consegue ultrapassar a Branca por causa da Hitbox        
         chess.exibirTabuleiro();
     }
 
