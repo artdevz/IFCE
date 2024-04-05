@@ -25,11 +25,15 @@ class Tabuleiro {
     }
 
     // GettersAndSetters:
+    public string getEntradaDaMatrizDoTabuleiro(int matrizPosX, int matrizPosY) {
+        return matrizDoTabuleiro[matrizPosX, matrizPosY];
+    }
+
     public void setMatrizDoTabuleiro(int posAntigaX, int posAntigaY, int posAtualX, int posAtualY, string peca) {
         matrizDoTabuleiro[posAntigaX, posAntigaY] = "[ ]";
-        Console.WriteLine("Apagar Fantasma");
+        //Console.WriteLine("Apagar Fantasma");
         matrizDoTabuleiro[posAtualX, posAtualY] = "["+peca+"]";
-        Console.WriteLine("Adicionando Peça");
+        //Console.WriteLine("Adicionando Peça");
     }       
 
 }
