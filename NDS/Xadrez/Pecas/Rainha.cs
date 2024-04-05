@@ -19,17 +19,16 @@ class Rainha {
             positionX = 3;
             positionY = 7;
             Rainha.quantidadeBranco++;
-            Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265b");
+            //Tabuleiro t = new Tabuleiro();
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265b");
         }
         
         if ((isBranco == false) && (isInicio == true)) {
             positionX = 3;
             positionY = 0;
             Rainha.quantidadePreto++;
-            Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2655");
+            //Tabuleiro t = new Tabuleiro();
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2655");
         }
-    }
-    
+    }    
 }
