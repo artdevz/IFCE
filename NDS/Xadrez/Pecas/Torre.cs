@@ -17,109 +17,51 @@ class Torre {
         if ((posX < 0) || (posX > 7) || (posY < 0) || (posY > 7)) Console.WriteLine("[ERRO]: Posição Inválida.");
 
         // Regra de Alcance:
-        Console.WriteLine($"{this.positionX}, {this.positionY}");
-        if ((MovimentoNoAlcance(posX, posY) == true) & (FogoAmigo(posX, posY) == false)) {
+        //Console.WriteLine($"{this.positionX}, {this.positionY}");
+        if ((MovimentoNoAlcance(posX, posY) == true) && (FogoAmigo(posX, posY) == false)) {
+            Console.WriteLine($"{MovimentoNoAlcance(posX, posY)}, {FogoAmigo(posX, posY)}");            
             Console.WriteLine("Movimento Permitido.");
             Tabuleiro t = new Tabuleiro();
             if (isBranco == true)  t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265c");
             if (isBranco == false) t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2656");
             this.positionX = posX;
             this.positionY = posY;
-        } else {
+        } 
+        else {
             Console.WriteLine("Movimento Proíbido.");
         }       
         
     }
 
     public bool MovimentoNoAlcance(int posX, int posY) {
-        if ((this.positionX == posX && this.positionY != posY) || (this.positionX != posX && this.positionX == posY)) return true;
+        if ((this.positionX == posX && this.positionY != posY) || (this.positionX != posX && this.positionY == posY)) return true;
+        Console.WriteLine("Fora do Alcance");
         return false;
     }
 
     public bool FogoAmigo(int posX, int posY) {
-        Console.WriteLine(0);
-
+        Console.WriteLine("Cond 0");
+        Tabuleiro t = new Tabuleiro();
         if (this.positionX == posX && this.positionY < posY) {
-            Console.WriteLine(1);                     
-            for (int j = this.positionY+1; j <= posX; j++) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-            }
+            Console.WriteLine("Cond 1");                    
+            for (int j = (this.positionY+1); j <= posY; j++) if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
         }
 
         if (this.positionX > posX && this.positionY == posY) {
-            Console.WriteLine(2);
-            for (int i = this.positionX-1; i >= posX; i--) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-            }
+            Console.WriteLine("Cond 2");
+            for (int i = (this.positionX-1); i >= posX; i--) if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
         }
 
         if (this.positionX < posX && this.positionY == posY) {
-            Console.WriteLine(3);
-            for (int i = this.positionX+1; i <= posX; i++) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-            }
+            Console.WriteLine("Cond 3");
+            for (int i = (this.positionX+1); i <= posX; i++) if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
         }
 
         if (this.positionX == posX && this.positionY > posY) {
-            Console.WriteLine(4);            
-            for (int j = this.positionY-1; j >= posX; j--) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-            }
-        }
-
-        /*
-        if (this.positionX <= posX && this.positionY <= posY) {
-            Console.WriteLine(1);
-            for (int i = this.positionX+1; i <= posX; i++) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-            }           
-            for (int j = this.positionY+1; j <= posX; j++) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-            }
-        }
-
-        if (this.positionX >= posX && this.positionY <= posY) {
-            Console.WriteLine(2);
-            for (int i = this.positionX-1; i >= posX; i--) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-            }
-            for (int j = this.positionY+1; j <= posX; j++) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-            }
-        }
-
-        if (this.positionX <= posX && this.positionY >= posY) {
-            Console.WriteLine(3);
-            for (int i = this.positionX+1; i <= posX; i++) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-            }
-            for (int j = this.positionY-1; j >= posX; j--) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-            }
-        }
-
-        if (this.positionX >= posX && this.positionY >= posY) {
-            Console.WriteLine(4);
-            for (int i = this.positionX-1; i >= posX; i--) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-            }
-            for (int j = this.positionY-1; j >= posX; j--) {
-            Tabuleiro t = new Tabuleiro();            
-            if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-            }
-        } */
-        
+            Console.WriteLine("Cond 4");            
+            for (int j = (this.positionY-1); j >= posY; j--) if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
+        }        
+        Console.WriteLine("Não há colisão");
         return false;  
     }
 
