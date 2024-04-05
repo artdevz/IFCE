@@ -67,9 +67,9 @@ class Peao {
         }
                
         // Regra de Fogo-Amigo:
+            // Copiar da Torre
         
-        
-        // Regra de Ataque:
+        // Regra de Ataque:            
     
     }
 
