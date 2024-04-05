@@ -13,27 +13,24 @@ class Peao {
     private bool isMovido;
     
     // Construtor:
-    public Peao(bool isBranco, bool isInicio)
-    {
+    public Peao(bool isBranco, bool isInicio) {
         this.isBranco = isBranco;
         this.isMovido = false;
-        if ((isBranco == true ) && (isInicio == true))
-        {
+
+        if ((isBranco == true ) && (isInicio == true)) {
             positionX = quantidadeBranco;
             positionY = 6;
             Peao.quantidadeBranco++;
             Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "\u265f");
-                                    
+            t.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "\u265f");                                    
         }
-        else
-        {
+
+        else {
             positionX = quantidadePreto;
             positionY = 1;
             Peao.quantidadePreto++;            
             Tabuleiro t = new Tabuleiro();
             t.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "\u2659");
-
         }
     }
 
@@ -54,7 +51,9 @@ class Peao {
                 Console.WriteLine("Movimento Proíbido");
             }
 
-        } else {
+        }
+
+        if (isBranco == false) {
             if (MoverPeaoPreto(posX, posY) == true) {
                 Console.WriteLine("Movimento Permitido");
                 Tabuleiro t = new Tabuleiro();
@@ -76,18 +75,21 @@ class Peao {
     public bool MoverPeaoBranco(int x, int y) {
         Console.WriteLine("Mover Branco");
         Console.WriteLine($"Posição Atual: {this.positionX} {this.positionY} -> {x} {y}");
+
         if (this.positionX == x && this.positionY != y) {            
             return true;
         }
+
         if (this.positionX == x && (this.positionY-2) == y && this.isMovido == false) {
             this.isMovido = true;
             return true;
         } 
+
         if ((this.positionX == (x+1)) && (this.positionY == (y+1)) ||
-            (this.positionX == (x-1)) && (this.positionY == (y+1)) && (isMatar() == true) ) 
-        {
+            (this.positionX == (x-1)) && (this.positionY == (y+1)) && (isMatar() == true) ) {
             return true;
-        }            
+        }
+
         return false;
     }
 
@@ -102,10 +104,10 @@ class Peao {
             return true;
         }
         if ((this.positionX == (x+1)) && (this.positionY == (y-1)) ||
-            (this.positionX == (x-1)) && (this.positionY == (y-1)) && (isMatar() == true) ) 
-        {
+            (this.positionX == (x-1)) && (this.positionY == (y-1)) && (isMatar() == true) ) {
             return true;
-        }           
+        }
+
         return false;
         
     }
