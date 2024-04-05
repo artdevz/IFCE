@@ -31,4 +31,21 @@ class Bispo {
             Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2657");
         }
     }
+
+    // GettersAndSetters:
+
+    public bool IsBranco {
+        get { return isBranco; }
+        //set { isBranco = value; }
+    }
+    
+    public int PositionX {
+        get { return positionX; }
+        //set { positionX = value; }
+    }
+    
+    public int PositionY {
+        get { return positionY; }
+        //set { positionY = value; }
+    }
 }
