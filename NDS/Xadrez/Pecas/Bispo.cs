@@ -19,16 +19,16 @@ class Bispo {
             positionX = Bispo.quantidadeBranco + 2 + Bispo.quantidadePreto*2;
             positionY = 7;
             Bispo.quantidadeBranco++;
-            Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265d");
+            //Tabuleiro t = new Tabuleiro();
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265d");
         }
         
         if ((isBranco == false) && (isInicio == true)) {
             positionX = Bispo.quantidadePreto + 2 + Bispo.quantidadePreto*2;
             positionY = 0;
             Bispo.quantidadePreto++;
-            Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2657");
+            //Tabuleiro t = new Tabuleiro();
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2657");
         }
     }
 }
