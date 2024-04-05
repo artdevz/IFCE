@@ -7,20 +7,13 @@ class Tabuleiro {
     private static string[,] matrizDoTabuleiro = new string[8,8];
     
     // Métodos:
-
     public void gerarTabuleiro() {
-        for (int j = 0; j < 8; j++) {
-            for (int i = 0; i < 8; i++) {
-                matrizDoTabuleiro[i,j] = "[ ]";
-            }
-        }
+        for (int j = 0; j < 8; j++) for (int i = 0; i < 8; i++) matrizDoTabuleiro[i,j] = "[ ]";        
     }
+
     public void exibirTabuleiro() {
         for (int j = 0; j < 8; j++) {
-            for (int i = 0; i < 8; i++) {
-                Console.Write(matrizDoTabuleiro[i,j]);
-            }
-            Console.WriteLine("");
+            for (int i = 0; i < 8; i++) Console.Write(matrizDoTabuleiro[i,j]); Console.WriteLine("");
         }
     }
 
