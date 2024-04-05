@@ -25,7 +25,7 @@ class Peao {
             t.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "\u265f");                                    
         }
 
-        else {
+        if ((isBranco == false) && (isInicio == true)) {
             positionX = quantidadePreto;
             positionY = 1;
             Peao.quantidadePreto++;            
