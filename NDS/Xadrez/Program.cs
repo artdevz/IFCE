@@ -7,7 +7,7 @@ class Program {
     static void Main(string[] args) {
         
         Tabuleiro chess = new Tabuleiro();
-        chess.gerarTabuleiro();
+        Tabuleiro.gerarTabuleiro();
         
         //IniciarJogo(){
         
@@ -43,10 +43,10 @@ class Program {
             reis.Add(rei);
         }
         //IniciarJogo()}        
-        chess.exibirTabuleiro();
-        torres[0].MoverTorre(true, 0, 4);     
-        torres[1].MoverTorre(false, 0, 6); // Quando não há peões, a Torre Preta não consegue ultrapassar a Branca por causa da Hitbox        
-        chess.exibirTabuleiro();
+        Tabuleiro.exibirTabuleiro();
+        //torres[0].MoverTorre(true, 0, 4);  // Irá ser proíbido por haver peões na frente
+        //torres[1].MoverTorre(false, 0, 6); // Quando não há peões, a Torre Preta não consegue ultrapassar a Branca por causa da Hitbox        
+        //chess.exibirTabuleiro();
     }
 
     public static void IniciarJogo() {
