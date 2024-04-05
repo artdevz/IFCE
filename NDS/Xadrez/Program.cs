@@ -11,16 +11,18 @@ class Program {
         
         //IniciarJogo(){
         
-        List<Peao> peoes = new List<Peao>();
+        List<Peao> peoes = new List<Peao>();   
+        List<Bispo> bispos = new List<Bispo>();
+        List<Cavalo> cavalos = new List<Cavalo>();
+        List<Torre> torres = new List<Torre>();
+        List<Rainha> rainhas = new List<Rainha>();
+        List<Rei> reis = new List<Rei>();
+
         for (int i = 0; i < 16; i++) {
             bool cor =  (i % 2 == 0)? true : false;
             Peao peao = new Peao(cor, true);
             peoes.Add(peao);
         }
-    
-        List<Bispo> bispos = new List<Bispo>();
-        List<Cavalo> cavalos = new List<Cavalo>();
-        List<Torre> torres = new List<Torre>();
         
         for (int i = 0; i < 4; i++) {
             bool cor =  (i % 2 == 0)? true : false;
@@ -30,10 +32,7 @@ class Program {
             cavalos.Add(cavalo);
             Torre torre = new Torre(cor, true);
             torres.Add(torre);
-        }
-
-        List<Rainha> rainhas = new List<Rainha>();
-        List<Rei> reis = new List<Rei>();
+        }        
         
         for (int i = 0; i < 2; i++) {
             bool cor = (i % 2 == 0)? true : false;
@@ -44,9 +43,9 @@ class Program {
         }
         //IniciarJogo()}        
         Tabuleiro.exibirTabuleiro();
-        //torres[0].MoverTorre(true, 0, 4);  // Irá ser proíbido por haver peões na frente
-        //torres[1].MoverTorre(false, 0, 6); // Quando não há peões, a Torre Preta não consegue ultrapassar a Branca por causa da Hitbox        
-        //chess.exibirTabuleiro();
+        torres[0].MoverTorre(true, 0, 4);  // Irá ser proíbido por haver peões na frente
+        torres[1].MoverTorre(false, 0, 6); // Quando não há peões, a Torre Preta não consegue ultrapassar a Branca por causa da Hitbox        
+        Tabuleiro.exibirTabuleiro();
     }
 
     public static void IniciarJogo() {
