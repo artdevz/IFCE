@@ -118,21 +118,19 @@ class Peao {
     
     // GettersAndSetters:
 
-    /*public bool isBranco
-    {
+    public bool IsBranco {
         get { return isBranco; }
-        set { isBranco = value; }
-    }*/
-    public int PositionX
-    {
-        get { return positionX; }
-        set { positionX = value; }
+        //set { isBranco = value; }
     }
     
-    public int PositionY
-    {
+    public int PositionX {
+        get { return positionX; }
+        //set { positionX = value; }
+    }
+    
+    public int PositionY {
         get { return positionY; }
-        set { positionY = value; }
+        //set { positionY = value; }
     }
     
 }
