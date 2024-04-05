@@ -30,5 +30,22 @@ class Rainha {
             //Tabuleiro t = new Tabuleiro();
             Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2655");
         }
+    }
+
+    // GettersAndSetters:
+
+    public bool IsBranco {
+        get { return isBranco; }
+        //set { isBranco = value; }
+    }
+    
+    public int PositionX {
+        get { return positionX; }
+        //set { positionX = value; }
+    }
+    
+    public int PositionY {
+        get { return positionY; }
+        //set { positionY = value; }
     }    
 }
