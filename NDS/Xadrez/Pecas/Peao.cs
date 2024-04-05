@@ -40,17 +40,14 @@ class Peao {
     // Métodos:
     public void MoverPeao(Boolean isBranco, int posX, int posY) {
         // Regra Geral:
-        if ((posX < 0) || (posX > 7) || (posY < 0) || (posY > 7))
-        {
-            Console.WriteLine("[ERRO]: Posição Inválida.");
-        }
+        if ((posX < 0) || (posX > 7) || (posY < 0) || (posY > 7)) Console.WriteLine("[ERRO]: Posição Inválida.");
 
         // Regra de Alcance:        
         if (isBranco == true) {
             if (MoverPeaoBranco(posX, posY) == true) {
                 Console.WriteLine("Movimento Permitido");
                 Tabuleiro t = new Tabuleiro();
-                t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2659");
+                t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265f");
                 this.positionX = posX;
                 this.positionY = posY;
             } else {
@@ -61,7 +58,7 @@ class Peao {
             if (MoverPeaoPreto(posX, posY) == true) {
                 Console.WriteLine("Movimento Permitido");
                 Tabuleiro t = new Tabuleiro();
-                t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265f");
+                t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2659");
                 this.positionX = posX;
                 this.positionY = posY;
             } else {
