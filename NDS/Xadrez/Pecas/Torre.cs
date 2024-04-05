@@ -73,5 +73,21 @@ class Torre {
         Console.WriteLine("Não há colisão");
         return false;  
     }
+
+    // GettersAndSetters:
+
+    public bool IsBranco {
+        get { return isBranco; }
+        //set { isBranco = value; }
+    }
     
+    public int PositionX {
+        get { return positionX; }
+        //set { positionX = value; }
+    }
+    
+    public int PositionY {
+        get { return positionY; }
+        //set { positionY = value; }
+    }    
 }
