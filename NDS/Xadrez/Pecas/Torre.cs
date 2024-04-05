@@ -11,6 +11,27 @@ class Torre {
     private int positionX;
     private int positionY;
 
+    // Construtor:
+    public Torre(bool isBranco, bool isInicio) {
+        this.isBranco = isBranco;
+        
+        if ((isBranco == true) && (isInicio == true)) {
+            positionX = Torre.quantidadeBranco*7;
+            positionY = 7;
+            Torre.quantidadeBranco++;
+            //Tabuleiro t = new Tabuleiro();
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265c");
+        }
+        
+        if ((isBranco == false) && (isInicio == true)) {
+            positionX = Torre.quantidadePreto*7;
+            positionY = 0;
+            Torre.quantidadePreto++;
+            //Tabuleiro t = new Tabuleiro();
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2656");
+        }
+    }
+
     // Métodos:
     public void MoverTorre(bool isBranco, int posX, int posY) {
         // Regra Geral:
@@ -21,9 +42,9 @@ class Torre {
         if ((MovimentoNoAlcance(posX, posY) == true) && (FogoAmigo(posX, posY) == false)) {
             Console.WriteLine($"{MovimentoNoAlcance(posX, posY)}, {FogoAmigo(posX, posY)}");            
             Console.WriteLine("Movimento Permitido.");
-            Tabuleiro t = new Tabuleiro();
-            if (isBranco == true)  t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265c");
-            if (isBranco == false) t.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2656");
+            //Tabuleiro t = new Tabuleiro();
+            if (isBranco == true)  Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265c");
+            if (isBranco == false) Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2656");
             this.positionX = posX;
             this.positionY = posY;
         } 
@@ -40,37 +61,17 @@ class Torre {
     }
 
     public bool FogoAmigo(int posX, int posY) {        
-        Tabuleiro t = new Tabuleiro();
-        if (this.positionX == posX && this.positionY < posY) for (int j = (this.positionY+1); j <= posY; j++) if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;        
+        //Tabuleiro t = new Tabuleiro();
+        if (this.positionX == posX && this.positionY < posY) for (int j = (this.positionY+1); j <= posY; j++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;        
 
-        if (this.positionX > posX && this.positionY == posY) for (int i = (this.positionX-1); i >= posX; i--) if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;        
+        if (this.positionX > posX && this.positionY == posY) for (int i = (this.positionX-1); i >= posX; i--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;        
 
-        if (this.positionX < posX && this.positionY == posY) for (int i = (this.positionX+1); i <= posX; i++) if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
+        if (this.positionX < posX && this.positionY == posY) for (int i = (this.positionX+1); i <= posX; i++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
         
-        if (this.positionX == posX && this.positionY > posY) for (int j = (this.positionY-1); j >= posY; j--) if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
+        if (this.positionX == posX && this.positionY > posY) for (int j = (this.positionY-1); j >= posY; j--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
                
         Console.WriteLine("Não há colisão");
         return false;  
     }
-
-    // Construtor:
-    public Torre(bool isBranco, bool isInicio) {
-        this.isBranco = isBranco;
-        
-        if ((isBranco == true) && (isInicio == true)) {
-            positionX = Torre.quantidadeBranco*7;
-            positionY = 7;
-            Torre.quantidadeBranco++;
-            Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265c");
-        }
-        
-        if ((isBranco == false) && (isInicio == true)) {
-            positionX = Torre.quantidadePreto*7;
-            positionY = 0;
-            Torre.quantidadePreto++;
-            Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2656");
-        }
-    }
+    
 }
