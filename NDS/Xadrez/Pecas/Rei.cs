@@ -19,16 +19,16 @@ class Rei {
             positionX = 4;
             positionY = 7;
             Rei.quantidadeBranco++;
-            Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265a");
+            //Tabuleiro t = new Tabuleiro();
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265a");
         }
         
         if ((isBranco == false) && (isInicio == true)) {
             positionX = 4;
             positionY = 0;
             Rei.quantidadePreto++;
-            Tabuleiro t = new Tabuleiro();
-            t.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2654");
+            //Tabuleiro t = new Tabuleiro();
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2654");
         }
     }
     
