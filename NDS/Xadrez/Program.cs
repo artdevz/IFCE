@@ -46,6 +46,7 @@ class Program {
         torres[0].MoverTorre(true, 0, 4);  // Irá ser proíbido por haver peões na frente
         torres[1].MoverTorre(false, 0, 6); // Quando não há peões, a Torre Preta não consegue ultrapassar a Branca por causa da Hitbox        
         Tabuleiro.exibirTabuleiro();
+        Console.WriteLine(peoes[0].IsBranco);        
     }
 
     public static void IniciarJogo() {
