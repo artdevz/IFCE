@@ -39,28 +39,16 @@ class Torre {
         return false;
     }
 
-    public bool FogoAmigo(int posX, int posY) {
-        Console.WriteLine("Cond 0");
+    public bool FogoAmigo(int posX, int posY) {        
         Tabuleiro t = new Tabuleiro();
-        if (this.positionX == posX && this.positionY < posY) {
-            Console.WriteLine("Cond 1");                    
-            for (int j = (this.positionY+1); j <= posY; j++) if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-        }
+        if (this.positionX == posX && this.positionY < posY) for (int j = (this.positionY+1); j <= posY; j++) if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;        
 
-        if (this.positionX > posX && this.positionY == posY) {
-            Console.WriteLine("Cond 2");
-            for (int i = (this.positionX-1); i >= posX; i--) if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-        }
+        if (this.positionX > posX && this.positionY == posY) for (int i = (this.positionX-1); i >= posX; i--) if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;        
 
-        if (this.positionX < posX && this.positionY == posY) {
-            Console.WriteLine("Cond 3");
-            for (int i = (this.positionX+1); i <= posX; i++) if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-        }
-
-        if (this.positionX == posX && this.positionY > posY) {
-            Console.WriteLine("Cond 4");            
-            for (int j = (this.positionY-1); j >= posY; j--) if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-        }        
+        if (this.positionX < posX && this.positionY == posY) for (int i = (this.positionX+1); i <= posX; i++) if (t.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
+        
+        if (this.positionX == posX && this.positionY > posY) for (int j = (this.positionY-1); j >= posY; j--) if (t.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
+               
         Console.WriteLine("Não há colisão");
         return false;  
     }
