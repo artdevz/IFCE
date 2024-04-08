@@ -37,12 +37,11 @@ class Torre {
         // Regra Geral:
         if ((posX < 0) || (posX > 7) || (posY < 0) || (posY > 7)) Console.WriteLine("[ERRO]: Posição Inválida.");
 
-        // Regra de Alcance:
-        //Console.WriteLine($"{this.positionX}, {this.positionY}");
-        if ((MovimentoNoAlcance(posX, posY) == true) && (FogoAmigo(posX, posY) == false)) {
-            Console.WriteLine($"{MovimentoNoAlcance(posX, posY)}, {FogoAmigo(posX, posY)}");            
+        // Regra de Alcance:        
+        if ((MovimentoNoAlcance(posX, posY) == true) && (Colisao(posX, posY) == false)) {                       
             Console.WriteLine("Movimento Permitido.");
-            //Tabuleiro t = new Tabuleiro();
+            
+            // Alterar Tabuleiro:
             if (isBranco == true)  Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265c");
             if (isBranco == false) Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2656");
             this.positionX = posX;
@@ -54,13 +53,14 @@ class Torre {
         
     }
 
+    // Possívelmente desnecessário:
     public bool MovimentoNoAlcance(int posX, int posY) {
         if ((this.positionX == posX && this.positionY != posY) || (this.positionX != posX && this.positionY == posY)) return true;
         Console.WriteLine("Fora do Alcance");
         return false;
     }
 
-    public bool FogoAmigo(int posX, int posY) {        
+    public bool Colisao(int posX, int posY) {        
         //Tabuleiro t = new Tabuleiro();
         if (this.positionX == posX && this.positionY < posY) for (int j = (this.positionY+1); j <= posY; j++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;        
 
@@ -70,7 +70,7 @@ class Torre {
         
         if (this.positionX == posX && this.positionY > posY) for (int j = (this.positionY-1); j >= posY; j--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
                
-        Console.WriteLine("Não há colisão");
+        //Console.WriteLine("Não há colisão");
         return false;  
     }
 
