@@ -54,8 +54,11 @@ class Bispo {
 
     public bool MovimentoNoAlcance(int posX, int posY) {     
         
-        if (this.positionX < posX && this.positionY < posY) {
-            int m = this.positionX; int n = this.positionY;            
+        int m = posX; int n = posY;
+        Console.WriteLine($"Posição Inicial: {this.positionX}, {this.positionY}");
+        Console.WriteLine($"Posição Final: {m}, {n}"); 
+
+        if (this.positionX < posX && this.positionY < posY) {                        
             while (m < 7 && n < 7) {                
                 if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(++m, ++n) != "[ ]") if (IsMatar() == false) return false;
                 if (m == posX && n == posY) return true; 
@@ -64,8 +67,7 @@ class Bispo {
             Console.WriteLine("Movimento não está na diagonal");                       
         }        
 
-        if (this.positionX < posX && this.positionY > posY) {
-            int m = this.positionX; int n = this.positionY;            
+        if (this.positionX < posX && this.positionY > posY) {                       
             while (m < 7 && n > 0) {                
                 if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(++m, --n) != "[ ]") if (IsMatar() == false) return false;
                 if (m == posX && n == posY) return true; 
@@ -74,8 +76,7 @@ class Bispo {
             Console.WriteLine("Movimento não está na diagonal");                      
         }        
 
-        if (this.positionX > posX && this.positionY < posY) {
-            int m = this.positionX; int n = this.positionY;            
+        if (this.positionX > posX && this.positionY < posY) {                       
             while (m > 0 && n < 7) {                
                 if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(--m, ++n) != "[ ]") if (IsMatar() == false) return false;
                 if (m == posX && n == posY) return true; 
@@ -84,9 +85,7 @@ class Bispo {
             Console.WriteLine("Movimento não está na diagonal");                       
         }        
 
-        if (this.positionX > posX && this.positionY > posY) {
-            int m = this.positionX; int n = this.positionY;
-            Console.WriteLine($"Posição Final: {m}, {n}");            
+        if (this.positionX > posX && this.positionY > posY) { 
             while (m > 0 && n > 0) {                
                 if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(--m, --n) != "[ ]") if (IsMatar() == false) return false;
                 if (m == posX && n == posY) return true; 
