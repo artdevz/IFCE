@@ -66,9 +66,7 @@ class Bispo {
                 if (m == posX && n == posY) return true;
                 m++; n++;                             
             }
-
-            Console.WriteLine("Movimento não está na diagonal");
-            return false;            
+            Console.WriteLine("Movimento não está na diagonal");                       
         }        
 
         if (this.positionX < posX && this.positionY > posY) {
@@ -83,9 +81,7 @@ class Bispo {
                 if (m == posX && n == posY) return true;
                 m++; n--;                                
             }
-
-            Console.WriteLine("Movimento não está na diagonal");
-            return false;            
+            Console.WriteLine("Movimento não está na diagonal");                      
         }        
 
         if (this.positionX > posX && this.positionY < posY) {
@@ -100,9 +96,7 @@ class Bispo {
                 if (m == posX && n == posY) return true;
                 m--; n++;                    
             }
-
-            Console.WriteLine("Movimento não está na diagonal");
-            return false;            
+            Console.WriteLine("Movimento não está na diagonal");                       
         }        
 
         if (this.positionX > posX && this.positionY > posY) {
@@ -118,9 +112,7 @@ class Bispo {
                 if (m == posX && n == posY) return true; 
                 m--; n--;       
             }
-
-            Console.WriteLine("Movimento não está na diagonal");
-            return false;            
+            Console.WriteLine("Movimento não está na diagonal");                        
         }
         return false;        
     }
