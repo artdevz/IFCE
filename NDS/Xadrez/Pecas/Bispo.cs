@@ -57,14 +57,9 @@ class Bispo {
         if (this.positionX < posX && this.positionY < posY) {
             int m = this.positionX; int n = this.positionY;            
             while (m < 7 && n < 7) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(++m, ++n) != "[ ]") {
-                    if (IsMatar() == false) {                        
-                        Console.WriteLine("Colisão!");
-                        return false;
-                    }
-                }
-                if (m == posX && n == posY) return true;
-                m++; n++;                             
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(++m, ++n) != "[ ]") if (IsMatar() == false) return false;
+                if (m == posX && n == posY) return true; 
+                m++; n++;       
             }
             Console.WriteLine("Movimento não está na diagonal");                       
         }        
@@ -72,14 +67,9 @@ class Bispo {
         if (this.positionX < posX && this.positionY > posY) {
             int m = this.positionX; int n = this.positionY;            
             while (m < 7 && n > 0) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(++m, --n) != "[ ]") {
-                    if (IsMatar() == false) {                        
-                        Console.WriteLine("Colisão!");
-                        return false;
-                    }
-                }
-                if (m == posX && n == posY) return true;
-                m++; n--;                                
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(++m, --n) != "[ ]") if (IsMatar() == false) return false;
+                if (m == posX && n == posY) return true; 
+                m++; n--;       
             }
             Console.WriteLine("Movimento não está na diagonal");                      
         }        
@@ -87,14 +77,9 @@ class Bispo {
         if (this.positionX > posX && this.positionY < posY) {
             int m = this.positionX; int n = this.positionY;            
             while (m > 0 && n < 7) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(--m, ++n) != "[ ]") {
-                    if (IsMatar() == false) {                        
-                        Console.WriteLine("Colisão!");
-                        return false;
-                    }
-                }
-                if (m == posX && n == posY) return true;
-                m--; n++;                    
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(--m, ++n) != "[ ]") if (IsMatar() == false) return false;
+                if (m == posX && n == posY) return true; 
+                m--; n++;       
             }
             Console.WriteLine("Movimento não está na diagonal");                       
         }        
@@ -103,12 +88,7 @@ class Bispo {
             int m = this.positionX; int n = this.positionY;
             Console.WriteLine($"Posição Final: {m}, {n}");            
             while (m > 0 && n > 0) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(--m, --n) != "[ ]") {
-                    if (IsMatar() == false) {                        
-                        Console.WriteLine("Colisão!");
-                        return false;
-                    }
-                }
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(--m, --n) != "[ ]") if (IsMatar() == false) return false;
                 if (m == posX && n == posY) return true; 
                 m--; n--;       
             }
