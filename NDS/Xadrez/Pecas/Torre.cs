@@ -52,16 +52,15 @@ class Torre {
         }       
         
     }
-
-    // Possívelmente desnecessário:
+    
     public bool MovimentoNoAlcance(int posX, int posY) {
         if ((this.positionX == posX && this.positionY != posY) || (this.positionX != posX && this.positionY == posY)) return true;
         Console.WriteLine("Fora do Alcance");
         return false;
     }
 
-    public bool Colisao(int posX, int posY) {        
-        //Tabuleiro t = new Tabuleiro();
+    public bool Colisao(int posX, int posY) {       
+        
         if (this.positionX == posX && this.positionY < posY) for (int j = (this.positionY+1); j <= posY; j++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;        
 
         if (this.positionX > posX && this.positionY == posY) for (int i = (this.positionX-1); i >= posX; i--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;        
