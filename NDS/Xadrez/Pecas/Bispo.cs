@@ -54,50 +54,51 @@ class Bispo {
 
     public bool MovimentoNoAlcance(int posX, int posY) {     
         
-        int m = posX; int n = posY;
-        Console.WriteLine($"Posição Inicial: {this.positionX}, {this.positionY}");
-        Console.WriteLine($"Posição Final: {m}, {n}"); 
+        int m = this.positionX; int n = positionY;
 
         if (this.positionX < posX && this.positionY < posY) {                        
-            while (m < 7 && n < 7) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(++m, ++n) != "[ ]") if (IsMatar() == false) return false;
+            while (m <= 7 && n <= 7) {                
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") if (FogoAmigo(posX, posY) == true) return false;
                 if (m == posX && n == posY) return true; 
                 m++; n++;       
-            }
-            Console.WriteLine("Movimento não está na diagonal");                       
+            }                                   
         }        
 
         if (this.positionX < posX && this.positionY > posY) {                       
-            while (m < 7 && n > 0) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(++m, --n) != "[ ]") if (IsMatar() == false) return false;
+            while (m <= 7 && n >= 0) {                
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") if (FogoAmigo(posX, posY) == true) return false;
                 if (m == posX && n == posY) return true; 
                 m++; n--;       
-            }
-            Console.WriteLine("Movimento não está na diagonal");                      
+            }                                 
         }        
 
         if (this.positionX > posX && this.positionY < posY) {                       
-            while (m > 0 && n < 7) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(--m, ++n) != "[ ]") if (IsMatar() == false) return false;
+            while (m >= 0 && n <= 7) {                
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") if (FogoAmigo(posX, posY) == true) return false;
                 if (m == posX && n == posY) return true; 
                 m--; n++;       
-            }
-            Console.WriteLine("Movimento não está na diagonal");                       
+            }                                   
         }        
 
         if (this.positionX > posX && this.positionY > posY) { 
-            while (m > 0 && n > 0) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(--m, --n) != "[ ]") if (IsMatar() == false) return false;
-                if (m == posX && n == posY) return true; 
+            while (m >= 0 && n >= 0) {                
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") if (FogoAmigo(posX, posY) == true) return false;
+                if (m == posX && n == posY) return true;                
                 m--; n--;       
-            }
-            Console.WriteLine("Movimento não está na diagonal");                        
+            }                                 
         }
         return false;        
     }
 
-    public bool IsMatar() {
-        return true; // CORRIGIR: Peça Fantasma atravessa as peças Aliadas/Inimigas e mata as Aliadas
+    // BUG PA KARALHO: REFAZER
+    public bool FogoAmigo(int posX, int posY) {
+        string peca = Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, posY);
+        if (this.isBranco == true) {
+            Console.WriteLine("Amigo");
+            if (peca == "\u265d" || peca == "\u265e" || peca == "\u265f" || peca == "\u265b" || peca == "\u265a" || peca == "\u265c") return true;
+        }
+        if (this.isBranco == false) if (peca == "\u2657" || peca == "\u2658" || peca == "\u2659" || peca == "\u2655" || peca == "\u2654" || peca == "\u2656") return true;
+        return false;
     }
 
     // GettersAndSetters:
