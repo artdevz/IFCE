@@ -19,7 +19,6 @@ class Torre {
             positionX = Torre.quantidadeBranco*7;
             positionY = 7;
             Torre.quantidadeBranco++;
-            //Tabuleiro t = new Tabuleiro();
             Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265c");
         }
         
@@ -27,7 +26,6 @@ class Torre {
             positionX = Torre.quantidadePreto*7;
             positionY = 0;
             Torre.quantidadePreto++;
-            //Tabuleiro t = new Tabuleiro();
             Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2656");
         }
     }
@@ -62,14 +60,10 @@ class Torre {
     public bool Colisao(int posX, int posY) {       
         
         if (this.positionX == posX && this.positionY < posY) for (int j = (this.positionY+1); j <= posY; j++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;        
-
         if (this.positionX > posX && this.positionY == posY) for (int i = (this.positionX-1); i >= posX; i--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;        
-
         if (this.positionX < posX && this.positionY == posY) for (int i = (this.positionX+1); i <= posX; i++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-        
         if (this.positionX == posX && this.positionY > posY) for (int j = (this.positionY-1); j >= posY; j--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
                
-        //Console.WriteLine("Não há colisão");
         return false;  
     }
 
