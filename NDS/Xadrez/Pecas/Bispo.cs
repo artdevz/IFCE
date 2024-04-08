@@ -31,6 +31,103 @@ class Bispo {
             Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2657");
         }
     }
+    // Métodos:
+    public void MoverBispo(bool isBranco, int posX, int posY) {
+        // Regra Geral:
+        if ((posX < 0) || (posX > 7) || (posY < 0) || (posY > 7)) Console.WriteLine("[ERRO]: Posição Inválida.");
+
+        // Regra de Alcance:        
+        if (MovimentoNoAlcance(posX, posY) == true) {
+            //Console.WriteLine($"{MovimentoNoAlcance(posX, posY)}");            
+            Console.WriteLine("Movimento Permitido.");
+            
+            // Alterar Tabuleiro:
+            if (isBranco == true)  Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265d");
+            if (isBranco == false) Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2657");
+            this.positionX = posX;
+            this.positionY = posY;
+        } 
+        else {
+            Console.WriteLine("Movimento Proíbido.");
+        }   
+    }
+
+    public bool MovimentoNoAlcance(int posX, int posY) {     
+        
+        if (this.positionX < posX && this.positionY < posY) {
+            int m = this.positionX; int n = this.positionY;            
+            while (m < 8 && n < 8) {
+                m++; n++;
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") { // BUG: Saindo do Index
+                    if (IsMatar() == false) {                        
+                        Console.WriteLine("Colisão!");
+                        return false;
+                    }
+                }
+                if (m == posX && n == posY) return true;                             
+            }
+
+            Console.WriteLine("Movimento não está na diagonal");
+            return false;            
+        }        
+
+        if (this.positionX < posX && this.positionY > posY) {
+            int m = this.positionX; int n = this.positionY;            
+            while (m < 8 && n >= 0) {
+                m++; n--;
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") { // BUG: Saindo do Index
+                    if (IsMatar() == false) {                        
+                        Console.WriteLine("Colisão!");
+                        return false;
+                    }
+                }
+                if (m == posX && n == posY) return true;                                
+            }
+
+            Console.WriteLine("Movimento não está na diagonal");
+            return false;            
+        }        
+
+        if (this.positionX > posX && this.positionY < posY) {
+            int m = this.positionX; int n = this.positionY;            
+            while (m >= 0 && n < 8) {
+                m--; n++; 
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") { // BUG: Saindo do Index
+                    if (IsMatar() == false) {                        
+                        Console.WriteLine("Colisão!");
+                        return false;
+                    }
+                }
+                if (m == posX && n == posY) return true;                    
+            }
+
+            Console.WriteLine("Movimento não está na diagonal");
+            return false;            
+        }        
+
+        if (this.positionX > posX && this.positionY > posY) {
+            int m = this.positionX; int n = this.positionY;
+            Console.WriteLine($"Posição Final: {m}, {n}");            
+            while (m >= 0 && n >= 0) {
+                m--; n--;
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") { // BUG: Saindo do Index
+                    if (IsMatar() == false) {                        
+                        Console.WriteLine("Colisão!");
+                        return false;
+                    }
+                }
+                if (m == posX && n == posY) return true;        
+            }
+
+            Console.WriteLine("Movimento não está na diagonal");
+            return false;            
+        }
+        return false;        
+    }
+
+    public bool IsMatar() {
+        return true; // CORRIGIR: Peça Fantasma atravessa as peças Aliadas/Inimigas e mata as Aliadas
+    }
 
     // GettersAndSetters:
 
