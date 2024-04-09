@@ -7,6 +7,7 @@ class Program {
     static void Main(string[] args) {
         
         Tabuleiro chess = new Tabuleiro();
+        Rodada r = new Rodada();
         Tabuleiro.gerarTabuleiro();
         
         //IniciarJogo(){
@@ -42,10 +43,14 @@ class Program {
             reis.Add(rei);
         }
         //IniciarJogo()}        
-        Tabuleiro.exibirTabuleiro();        
-        bispos[0].MoverBispo(true, 4, 5);        
+        Tabuleiro.exibirTabuleiro();      
+        torres[0].MoverTorre(true, 0, 5);
         Tabuleiro.exibirTabuleiro();
-        bispos[0].MoverBispo(true, 6, 7);
+        torres[0].MoverTorre(true, 2, 5);
+        Tabuleiro.exibirTabuleiro();
+        torres[0].MoverTorre(true, 2, 6);
+        Tabuleiro.exibirTabuleiro();
+        torres[0].MoverTorre(true, 1, 6);
         Tabuleiro.exibirTabuleiro();
 
     }        
