@@ -9,4 +9,7 @@ class Rodada {
         return false;
     }
 
+    // Adicionar:
+        //RegraGeral()
+        //AlterarTabuleiro()
 }
