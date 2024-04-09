@@ -57,18 +57,12 @@ class Torre {
         return false;
     }
 
-    public bool Colisao(int posX, int posY) {       
-        
-        int i = this.positionX; int j = this.positionY;
-        if (this.positionX == posX && this.positionY < posY) for (int j = (this.positionY+1); j <= posY; j++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;        
-        if (this.positionX > posX && this.positionY == posY) for (int i = (this.positionX-1); i >= posX; i--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;        
-        if (this.positionX < posX && this.positionY == posY) for (int i = (this.positionX+1); i <= posX; i++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-        if (this.positionX == posX && this.positionY > posY) {            
-            while (j >= posY) {
-                j--;
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
-            } 
-        }
+    public bool Colisao(int posX, int posY) {     
+
+        if (this.positionX == posX && this.positionY < posY) for (int j = this.positionY; j <= posY; j++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return (fogoAmigo(this.isBranco, posX, posY) == true)? true : false;       
+        if (this.positionX > posX && this.positionY == posY) for (int i = this.positionX; i >= posX; i--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return (fogoAmigo(this.isBranco, posX, posY) == true)? true : false;       
+        if (this.positionX < posX && this.positionY == posY) for (int i = this.positionX; i <= posX; i++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return (fogoAmigo(this.isBranco, posX, posY) == true)? true : false;
+        if (this.positionX == posX && this.positionY > posY) for (int j = this.positionY; j >= posY; j--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return (fogoAmigo(this.isBranco, posX, posY) == true)? true : false;
                
         return false;  
     }
