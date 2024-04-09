@@ -52,11 +52,29 @@ class Bispo {
 
     public bool MovimentoNoAlcance(int posX, int posY) {     
         
-        int m = this.positionX; int n = positionY;       
+        int i = this.positionX; int j = this.positionY;
+        int caminhoX = (this.positionX < posX)? 1 : -1;
+        int caminhoY = (this.positionY < posY)? 1 : -1;
+        int rangeX = (this.positionX < posX)? 8 : -1;
+        int rangeY = (this.positionY < posY)? 8 : -1;      
+        
+        while (i != rangeX || j != rangeY) {                    
+            Console.WriteLine($"Coords: {i}, {j}");
+            Console.WriteLine($"Final: {posX}, {posY}");
+            Console.WriteLine($"Contador: {caminhoX}, {caminhoY}");
+            Console.WriteLine($"Limite: {rangeX}, {rangeY}");
+            if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
+            if (i == posX && j == posY) return true;
+            i+=caminhoX; j+=caminhoY;
+        }
+        return false; 
 
+        // Se posX > positionX, m += 1 else m+=-1 (Uma variável para cada possibilidade, então um for com +=1 ou +=-1) -> Irá reduzir para 1 for essa bomba:
+
+        /*
         if (this.positionX < posX && this.positionY < posY) {                        
             while (m <= 7 && n <= 7) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") return (fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
                 if (m == posX && n == posY) return true; 
                 m++; n++;       
             }                                   
@@ -64,7 +82,7 @@ class Bispo {
 
         if (this.positionX < posX && this.positionY > posY) {                                  
             while (m <= 7 && n >= 0) {   
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") return (fogoAmigo(this.isBranco, posX, posY) == true)? false : true;     
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;     
                 if (m == posX && n == posY) return true; 
                 m++; n--;       
             }                                 
@@ -72,7 +90,7 @@ class Bispo {
 
         if (this.positionX > posX && this.positionY < posY) {                       
             while (m >= 0 && n <= 7) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") return (fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
                 if (m == posX && n == posY) return true; 
                 m--; n++;       
             }                                   
@@ -80,19 +98,12 @@ class Bispo {
 
         if (this.positionX > posX && this.positionY > posY) { 
             while (m >= 0 && n >= 0) {                
-                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") return (fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(m, n) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
                 if (m == posX && n == posY) return true;                
                 m--; n--;       
             }                                 
         }
-        return false;        
-    }
-    
-    public bool fogoAmigo(bool isBranco, int posX, int posY) {
-        string peca = Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, posY);           
-        if (this.isBranco == true) if (peca == "[\u265d]" || peca == "[\u265e]" || peca == "[\u265f]" || peca == "[\u265b]" || peca == "[\u265a]" || peca == "[\u265c]") return true;        
-        if (this.isBranco == false) if (peca == "[\u2657]" || peca == "[\u2658]" || peca == "[\u2659]" || peca == "[\u2655]" || peca == "[\u2654]" || peca == "[\u2656]") return true;
-        return false;
+        return false; */               
     }
 
     // GettersAndSetters:
