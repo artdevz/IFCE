@@ -59,12 +59,25 @@ class Torre {
 
     public bool Colisao(int posX, int posY) {       
         
+        int i = this.positionX; int j = this.positionY;
         if (this.positionX == posX && this.positionY < posY) for (int j = (this.positionY+1); j <= posY; j++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;        
         if (this.positionX > posX && this.positionY == posY) for (int i = (this.positionX-1); i >= posX; i--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;        
         if (this.positionX < posX && this.positionY == posY) for (int i = (this.positionX+1); i <= posX; i++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return true;
-        if (this.positionX == posX && this.positionY > posY) for (int j = (this.positionY-1); j >= posY; j--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
+        if (this.positionX == posX && this.positionY > posY) {            
+            while (j >= posY) {
+                j--;
+                if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return true;
+            } 
+        }
                
         return false;  
+    }
+
+    public bool fogoAmigo(bool isBranco, int posX, int posY) {
+        string peca = Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, posY);           
+        if (this.isBranco == true) if (peca == "[\u265d]" || peca == "[\u265e]" || peca == "[\u265f]" || peca == "[\u265b]" || peca == "[\u265a]" || peca == "[\u265c]") return true;        
+        if (this.isBranco == false) if (peca == "[\u2657]" || peca == "[\u2658]" || peca == "[\u2659]" || peca == "[\u2655]" || peca == "[\u2654]" || peca == "[\u2656]") return true;
+        return false;
     }
 
     // GettersAndSetters:
