@@ -59,12 +59,10 @@ class Torre {
 
     public bool Colisao(int posX, int posY) {     
 
-        if (this.positionX == posX && this.positionY < posY) for (int j = this.positionY; j <= posY; j++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? true : false;       
-        if (this.positionX > posX && this.positionY == posY) for (int i = this.positionX; i >= posX; i--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? true : false;       
-        if (this.positionX < posX && this.positionY == posY) for (int i = this.positionX; i <= posX; i++) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, posY) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? true : false;
-        if (this.positionX == posX && this.positionY > posY) for (int j = this.positionY; j >= posY; j--) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? true : false;
-               
-        return false;  
+        int caminhoX = (this.positionX < posX)? 1 : -1; 
+        int caminhoY = (this.positionY < posY)? 1 : -1;
+        for (int j = this.positionY; j != posY; j+=caminhoY) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? true : false;
+        return false;
     }
 
     // GettersAndSetters:
