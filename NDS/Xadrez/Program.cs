@@ -11,7 +11,7 @@ class Program {
         
         //IniciarJogo(){
         
-        List<Peao> peoes = new List<Peao>();   
+        //List<Peao> peoes = new List<Peao>();   
         List<Bispo> bispos = new List<Bispo>();
         List<Cavalo> cavalos = new List<Cavalo>();
         List<Torre> torres = new List<Torre>();
@@ -20,8 +20,8 @@ class Program {
 
         for (int i = 0; i < 16; i++) {
             bool cor =  (i % 2 == 0)? true : false;
-            Peao peao = new Peao(cor, true);
-            peoes.Add(peao);
+            //Peao peao = new Peao(cor, true);
+            //peoes.Add(peao);
         }
         
         for (int i = 0; i < 4; i++) {
@@ -43,10 +43,11 @@ class Program {
         }
         //IniciarJogo()}        
         Tabuleiro.exibirTabuleiro();        
-        bispos[2].MoverBispo(true, 6, 6);        
+        bispos[0].MoverBispo(true, 4, 5);        
         Tabuleiro.exibirTabuleiro();
-        bispos[2].MoverBispo(true, 0, 0);
+        bispos[0].MoverBispo(true, 6, 7);
         Tabuleiro.exibirTabuleiro();
+
     }        
 
     public static void IniciarJogo() {
