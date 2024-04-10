@@ -9,7 +9,8 @@ class Rodada {
         return false;
     }
 
-    // Adicionar:
-        //RegraGeral()
-        //AlterarTabuleiro()
+    public static bool regraGeral(int posX, int posY) {
+        return ((posX < 0) || (posX > 7) || (posY < 0) || (posY > 7))? false : true;        
+    }
+
 }
