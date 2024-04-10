@@ -54,16 +54,11 @@ class Rei {
 
     public bool movimentoNoAlcance(int posX, int posY) {     
         
-        // Comentado e Funciona, COMO?
         int i = this.positionX; int j = this.positionY;        
-        /*
         int caminhoX = (this.positionX == posX)? 0 : ((this.positionX < posX)? 1 : -1);
         int caminhoY = (this.positionY == posY)? 0 : ((this.positionY < posY)? 1 : -1);     
-        i+=caminhoX; j+=caminhoY;*/
-
-        //i = (this.positionX == posX)? i : ((this.positionX < posX)? ++i : --i);
-        //j = (this.positionY == posY)? j : ((this.positionY < posY)? ++j : --j);        
-
+          
+        i+=caminhoX; j+=caminhoY;    
         return (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) == "[ ]")? true : ((Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true);        
     }
 
