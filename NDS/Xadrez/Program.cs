@@ -43,19 +43,28 @@ class Program {
             reis.Add(rei);
         }
         //IniciarJogo()}        
-        Tabuleiro.exibirTabuleiro();      
-        torres[0].MoverTorre(true, 0, 5);
         Tabuleiro.exibirTabuleiro();
-        torres[0].MoverTorre(true, 2, 5);
+        reis[0].moverRei(true, 4, 6);
+        Tabuleiro.exibirTabuleiro();    
+        reis[0].moverRei(true, 4, 5);
         Tabuleiro.exibirTabuleiro();
-        torres[0].MoverTorre(true, 2, 6);
+        reis[0].moverRei(true, 4, 4);
         Tabuleiro.exibirTabuleiro();
-        torres[0].MoverTorre(true, 1, 6);
+        reis[0].moverRei(true, 4, 3);
         Tabuleiro.exibirTabuleiro();
+        reis[0].moverRei(true, 4, 2);
+        Tabuleiro.exibirTabuleiro();
+        reis[0].moverRei(true, 4, 1);
+        Tabuleiro.exibirTabuleiro();
+        reis[0].moverRei(true, 4, 0);
+        Tabuleiro.exibirTabuleiro();
+        Console.WriteLine("GANHOU!! :)");
+        reis[0].moverRei(true, 3, 0);
+        Tabuleiro.exibirTabuleiro();  
 
     }        
 
-    public static void IniciarJogo() {
+    public static void iniciarJogo() {
         // Ainda fazer
     }
 }
