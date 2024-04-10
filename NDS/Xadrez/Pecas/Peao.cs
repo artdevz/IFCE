@@ -11,40 +11,38 @@ class Peao {
     private int positionX;
     private int positionY;
     private bool isMovido;
+    private string icon;
     
     // Construtor:
     public Peao(bool isBranco, bool isInicio) {
         this.isBranco = isBranco;
         this.isMovido = false;
+        icon = (isBranco)? "\u265f" : "\u2659";
         
         if ((isBranco == true) && (isInicio == true)) {
             positionX = quantidadeBranco;
             positionY = 6;
-            Peao.quantidadeBranco++;
-            //Tabuleiro t = new Tabuleiro();
-            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "\u265f");                                    
+            Peao.quantidadeBranco++;            
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, icon);                                    
         }
 
         if ((isBranco == false) && (isInicio == true)) {
             positionX = quantidadePreto;
             positionY = 1;
-            Peao.quantidadePreto++;            
-            //Tabuleiro t = new Tabuleiro();
-            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, "\u2659");
+            Peao.quantidadePreto++;           
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.PositionY, this.PositionX, this.PositionY, icon);
         }
     }
 
     // Métodos:
     public void MoverPeao(Boolean isBranco, int posX, int posY) {
-        // Regra Geral:
-        if ((posX < 0) || (posX > 7) || (posY < 0) || (posY > 7)) Console.WriteLine("[ERRO]: Posição Inválida.");
+        if (Rodada.regraGeral(posX, posY) == false) Console.WriteLine("[ERRO]: Posição Inválida.");
 
         // Regra de Alcance:        
         if (isBranco == true) {
             if (MoverPeaoBranco(posX, posY) == true) {
-                Console.WriteLine("Movimento Permitido");
-                //Tabuleiro t = new Tabuleiro();
-                Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265f");
+                Console.WriteLine("Movimento Permitido");                
+                Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
                 this.positionX = posX;
                 this.positionY = posY;
             } else {
@@ -55,23 +53,21 @@ class Peao {
 
         if (isBranco == false) {
             if (MoverPeaoPreto(posX, posY) == true) {
-                Console.WriteLine("Movimento Permitido");
-                //Tabuleiro t = new Tabuleiro();
-                Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2659");
+                Console.WriteLine("Movimento Permitido");                
+                Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
                 this.positionX = posX;
                 this.positionY = posY;
             } else {
                 Console.WriteLine("Movimento Proíbido");
             }            
-        }
-               
-        // Regra de Fogo-Amigo:
-            // Copiar da Torre
+        }          
+        
+        // fogoAmigo() precisa ser implementado
         
         // Regra de Ataque:            
     
     }
-
+    // ATUALIZAR:
     public bool MoverPeaoBranco(int x, int y) {
         Console.WriteLine("Mover Branco");
         Console.WriteLine($"Posição Atual: {this.positionX} {this.positionY} -> {x} {y}");
@@ -92,7 +88,7 @@ class Peao {
 
         return false;
     }
-
+    // ATUALIZAR:
     public bool MoverPeaoPreto(int x, int y) {
         Console.WriteLine("Mover Preto");
         Console.WriteLine($"Posição Atual: {this.positionX} {this.positionY} -> {x} {y}");
@@ -111,7 +107,7 @@ class Peao {
         return false;
         
     }
-
+    // Acoplar com fogoAmigo()
     public bool isMatar() {
         return true;
     }    
