@@ -10,38 +10,39 @@ class Bispo {
     private bool isBranco;
     private int positionX;
     private int positionY;
+    private string icon;
 
     // Construtor:
     public Bispo(bool isBranco, bool isInicio) {
         this.isBranco = isBranco;
+        icon = (isBranco)? "\u265d" : "\u2657";
         
         if ((isBranco == true) && (isInicio == true)) {
             positionX = Bispo.quantidadeBranco + 2 + Bispo.quantidadePreto*2;
             positionY = 7;
             Bispo.quantidadeBranco++;            
-            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u265d");
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, icon);
         }
         
         if ((isBranco == false) && (isInicio == true)) {
             positionX = Bispo.quantidadePreto + 2 + Bispo.quantidadePreto*2;
             positionY = 0;
             Bispo.quantidadePreto++;            
-            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, "\u2657");
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, this.positionX, this.positionY, icon);
         }
     }
     
     // Métodos:
-    public void MoverBispo(bool isBranco, int posX, int posY) {
+    public void moverBispo(bool isBranco, int posX, int posY) {
         // Regra Geral:
-        if ((posX < 0) || (posX > 7) || (posY < 0) || (posY > 7)) Console.WriteLine("[ERRO]: Posição Inválida.");
+        if (Rodada.regraGeral(posX, posY) == false) Console.WriteLine("[ERRO]: Posição Inválida.");
 
         // Regra de Alcance:        
-        if (MovimentoNoAlcance(posX, posY) == true) {
+        if (movimentoNoAlcance(posX, posY) == true) {
             Console.WriteLine("Movimento Permitido.");
             
             // Alterar Tabuleiro:
-            if (isBranco == true)  Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u265d");
-            if (isBranco == false) Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, "\u2657");
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
             this.positionX = posX;
             this.positionY = posY;
         } 
@@ -50,7 +51,7 @@ class Bispo {
         }   
     }
 
-    public bool MovimentoNoAlcance(int posX, int posY) {     
+    public bool movimentoNoAlcance(int posX, int posY) {     
         
         int i = this.positionX; int j = this.positionY;
         int caminhoX = (this.positionX < posX)? 1 : -1;
@@ -63,7 +64,7 @@ class Bispo {
             if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
             if (i == posX && j == posY) return true;            
         }
-        return false;           
+        return false;
     }
 
     // GettersAndSetters:
