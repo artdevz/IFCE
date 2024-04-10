@@ -23,10 +23,8 @@ class Tabuleiro {
     }
 
     public static void setMatrizDoTabuleiro(int posAntigaX, int posAntigaY, int posAtualX, int posAtualY, string peca) {
-        matrizDoTabuleiro[posAntigaX, posAntigaY] = "[ ]";
-        //Console.WriteLine("Apagar Fantasma");
-        matrizDoTabuleiro[posAtualX, posAtualY] = "["+peca+"]";
-        //Console.WriteLine("Adicionando Peça");
+        matrizDoTabuleiro[posAntigaX, posAntigaY] = "[ ]";        
+        matrizDoTabuleiro[posAtualX, posAtualY] = "["+peca+"]";        
     }       
 
 }
