@@ -7,6 +7,7 @@ class Rodada {
     private static string[] pecasBrancas = new string[6] { "[\u265d]", "[\u265e]", "[\u265f]", "[\u265b]", "[\u265a]", "[\u265c]"};
     private static string[] pecasPretas = new string[6]  { "[\u2657]", "[\u2658]", "[\u2659]", "[\u2655]", "[\u2654]", "[\u2656]"};
 
+    // Métodos:
     public static bool fogoAmigo(bool isBranco, int posX, int posY) {
         string peca = Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, posY);           
         if (isBranco == true) if (pecasBrancas.Contains(peca)) return true;
