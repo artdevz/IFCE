@@ -44,23 +44,16 @@ class Program {
         }
         //IniciarJogo()}        
         Tabuleiro.exibirTabuleiro();
-        reis[0].moverRei(true, 4, 6);
-        Tabuleiro.exibirTabuleiro();    
-        reis[0].moverRei(true, 4, 5);
+        cavalos[0].moverCavalo(true, 1, 5);
+        Tabuleiro.exibirTabuleiro();        
+        cavalos[0].moverCavalo(true, 0, 5);
         Tabuleiro.exibirTabuleiro();
-        reis[0].moverRei(true, 4, 4);
+        cavalos[0].moverCavalo(true, 1, 3);
         Tabuleiro.exibirTabuleiro();
-        reis[0].moverRei(true, 4, 3);
+        cavalos[0].moverCavalo(true, 3, 2);
         Tabuleiro.exibirTabuleiro();
-        reis[0].moverRei(true, 4, 2);
-        Tabuleiro.exibirTabuleiro();
-        reis[0].moverRei(true, 4, 1);
-        Tabuleiro.exibirTabuleiro();
-        reis[0].moverRei(true, 4, 0);
-        Tabuleiro.exibirTabuleiro();
-        Console.WriteLine("GANHOU!! :)");
-        reis[0].moverRei(true, 3, 0);
-        Tabuleiro.exibirTabuleiro();  
+        cavalos[0].moverCavalo(true, 4, 0);
+        Tabuleiro.exibirTabuleiro();                 
 
     }        
 
