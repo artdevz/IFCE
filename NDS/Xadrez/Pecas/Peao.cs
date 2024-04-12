@@ -35,12 +35,12 @@ class Peao {
     }
 
     // Métodos:
-    public void MoverPeao(Boolean isBranco, int posX, int posY) {
+    public void moverPeao(Boolean isBranco, int posX, int posY) {
         if (Rodada.regraGeral(posX, posY) == false) Console.WriteLine("[ERRO]: Posição Inválida.");
 
         // Regra de Alcance:        
         if (isBranco == true) {
-            if (MoverPeaoBranco(posX, posY) == true) {
+            if (moverPeaoBranco(posX, posY) == true) {
                 Console.WriteLine("Movimento Permitido");                
                 Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
                 this.positionX = posX;
@@ -52,7 +52,7 @@ class Peao {
         }
 
         if (isBranco == false) {
-            if (MoverPeaoPreto(posX, posY) == true) {
+            if (moverPeaoPreto(posX, posY) == true) {
                 Console.WriteLine("Movimento Permitido");                
                 Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
                 this.positionX = posX;
@@ -68,7 +68,7 @@ class Peao {
     
     }
     // ATUALIZAR:
-    public bool MoverPeaoBranco(int x, int y) {
+    public bool moverPeaoBranco(int x, int y) {
         Console.WriteLine("Mover Branco");
         Console.WriteLine($"Posição Atual: {this.positionX} {this.positionY} -> {x} {y}");
 
@@ -89,7 +89,7 @@ class Peao {
         return false;
     }
     // ATUALIZAR:
-    public bool MoverPeaoPreto(int x, int y) {
+    public bool moverPeaoPreto(int x, int y) {
         Console.WriteLine("Mover Preto");
         Console.WriteLine($"Posição Atual: {this.positionX} {this.positionY} -> {x} {y}");
         if (this.positionX == x && (this.positionY+1) == y) {            
