@@ -56,10 +56,13 @@ class Rei {
         
         int i = this.positionX; int j = this.positionY;        
         int caminhoX = (this.positionX == posX)? 0 : ((this.positionX < posX)? 1 : -1);
-        int caminhoY = (this.positionY == posY)? 0 : ((this.positionY < posY)? 1 : -1);     
-        // BUG: Rei está sem limites  
-        i+=caminhoX; j+=caminhoY;    
-        return (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) == "[ ]")? true : ((Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true);        
+        int caminhoY = (this.positionY == posY)? 0 : ((this.positionY < posY)? 1 : -1);           
+        
+        i+=caminhoX; j+=caminhoY;
+        if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
+        if (i == posX && j == posY) return true;                   
+        
+        return false;
     }
 
     // GettersAndSetters:
