@@ -39,74 +39,40 @@ class Peao {
         if (Rodada.regraGeral(posX, posY) == false) Console.WriteLine("[ERRO]: Posição Inválida.");
 
         // Regra de Alcance:        
-        if (isBranco == true) {
-            if (moverPeaoBranco(posX, posY) == true) {
-                Console.WriteLine("Movimento Permitido");                
-                Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
-                this.positionX = posX;
-                this.positionY = posY;
-            } else {
-                Console.WriteLine("Movimento Proíbido");
-            }
+        if (movimentoNoAlcance(posX, posY) == true) {
+            Console.WriteLine("Movimento Permitido.");
+            
+            // Alterar Tabuleiro:
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
+            this.positionX = posX;
+            this.positionY = posY;
 
-        }
-
-        if (isBranco == false) {
-            if (moverPeaoPreto(posX, posY) == true) {
-                Console.WriteLine("Movimento Permitido");                
-                Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
-                this.positionX = posX;
-                this.positionY = posY;
-            } else {
-                Console.WriteLine("Movimento Proíbido");
-            }            
-        }          
+        } 
+        else {
+            Console.WriteLine("Movimento Proíbido.");
+        }         
         
         // fogoAmigo() precisa ser implementado
         
         // Regra de Ataque:            
     
     }
-    // ATUALIZAR:
-    public bool moverPeaoBranco(int x, int y) {
-        Console.WriteLine("Mover Branco");
-        Console.WriteLine($"Posição Atual: {this.positionX} {this.positionY} -> {x} {y}");
 
-        if (this.positionX == x && this.positionY != y) {            
-            return true;
-        }
+    public bool movimentoNoAlcance(int posX, int posY) {
 
-        if (this.positionX == x && (this.positionY-2) == y && this.isMovido == false) {
+        int i = this.positionX; int j = this.positionY;
+        int passoY = (isBranco == true)? -1 : 1;
+
+        if ( (Math.Abs(posY - j) == 2) && (i == posX) && (isMovido == false) ) {
+            passoY++;
             this.isMovido = true;
-            return true;
-        } 
-
-        if ((this.positionX == (x+1)) && (this.positionY == (y+1)) ||
-            (this.positionX == (x-1)) && (this.positionY == (y+1)) && (isMatar() == true) ) {
-            return true;
         }
-
-        return false;
-    }
-    // ATUALIZAR:
-    public bool moverPeaoPreto(int x, int y) {
-        Console.WriteLine("Mover Preto");
-        Console.WriteLine($"Posição Atual: {this.positionX} {this.positionY} -> {x} {y}");
-        if (this.positionX == x && (this.positionY+1) == y) {            
-            return true;
-        }
-        if (this.positionX == x && (this.positionY+2) == y && this.isMovido == false) {
-            this.isMovido = true;
-            return true;
-        }
-        if ((this.positionX == (x+1)) && (this.positionY == (y-1)) ||
-            (this.positionX == (x-1)) && (this.positionY == (y-1)) && (isMatar() == true) ) {
-            return true;
-        }
-
-        return false;
         
-    }
+        if ( (i == posX) && ( (j+=passoY) == posY) ) return true;
+        return true;
+
+    }   
+    
     // Acoplar com fogoAmigo()
     public bool isMatar() {
         return true;
