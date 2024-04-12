@@ -33,9 +33,32 @@ class Cavalo {
         }
     }
 
-    /*Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
+    // Métodos:
+    public void moverCavalo(bool isBranco, int posX, int posY) {
+        // Regra Geral:
+        if (Rodada.regraGeral(posX, posY) == false) Console.WriteLine("[ERRO]: Posição Inválida.");
+
+        // Regra de Alcance:
+        if (movimentoNoAlcance(posX, posY) == true) {
+            Console.WriteLine("Cavalo fez o L.");
+            
+            // Alterar Tabuleiro:            
+            Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
             this.positionX = posX;
-            this.positionY = posY;*/
+            this.positionY = posY;
+
+        } 
+        else {
+            Console.WriteLine("Cavalo fez o B.");
+        }
+    }
+
+    public bool movimentoNoAlcance(int posX, int posY) {
+
+        if (Rodada.fogoAmigo(this.isBranco, posX, posY) == true) return false;
+        return ((Math.Abs(posX - this.positionX) * Math.Abs(posY - this.positionY) == 2))? true : false;               
+
+    }
 
     // GettersAndSetters:
 
