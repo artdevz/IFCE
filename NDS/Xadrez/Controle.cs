@@ -47,7 +47,7 @@ class Controle {
             string jogador = (rodada % 2 == 1)? "Branco" : "Preto";
             bool isBranco = (rodada % 2 == 1)? true : false;
             // Ainda precisa fazer exceções e bla bla bla
-            Console.WriteLine($"Vez do Jogador {jogador}:\n Digita sua Escolha de Peça:");
+            Console.WriteLine($"Vez do Jogador {jogador}:\nDigita sua Escolha de Peça:");
             Console.WriteLine("[1] - Peão\n[2] - Bispo\n[3] - Cavalo\n[4] - Torre\n[5] - Rainha\n[6] - Rei");            
             int tipoDePeca = int.Parse(Console.ReadLine());
 
