@@ -9,7 +9,7 @@ class Rodada {
 
     // Métodos:
     public static bool fogoAmigo(bool isBranco, int posX, int posY) {
-        string peca = Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, posY);           
+        string peca = Tabuleiro.getEntradaDaMatrizDoTabuleiro(posX, posY);               
         if (isBranco == true) if (pecasBrancas.Contains(peca)) return true;
         if (isBranco == false) if (pecasPretas.Contains(peca)) return true;
         return false;
