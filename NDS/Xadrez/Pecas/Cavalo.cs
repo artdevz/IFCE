@@ -56,7 +56,7 @@ class Cavalo {
     public bool movimentoNoAlcance(int posX, int posY) {
 
         if (Rodada.fogoAmigo(this.isBranco, posX, posY) == true) return false;
-        return ((Math.Abs(posX - this.positionX) * Math.Abs(posY - this.positionY) == 2))? true : false;               
+        return (Math.Abs(posX - this.positionX) * Math.Abs(posY - this.positionY) == 2)? true : false;               
 
     }
 
