@@ -52,7 +52,9 @@ class Rainha {
         }
     }
 
-    public bool movimentoNoAlcance(int posX, int posY) {     
+    public bool movimentoNoAlcance(int posX, int posY) {
+
+        if (Rodada.fogoAmigo(this.isBranco, posX, posY) == true) return false;     
         
         int i = this.positionX; int j = this.positionY;        
         int caminhoX = (this.positionX == posX)? 0 : ((this.positionX < posX)? 1 : -1);
@@ -62,7 +64,8 @@ class Rainha {
         
         while (i != rangeX && j != rangeY) {
             i+=caminhoX; j+=caminhoY;
-            if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
+            // Apenas não está matando inimigos, acoplar com fogoAmigo() e retornar verdadeiro.            
+            if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return false;
             if (i == posX && j == posY) return true;            
         }
         return false;
