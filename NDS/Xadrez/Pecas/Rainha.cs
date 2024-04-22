@@ -63,9 +63,9 @@ class Rainha {
         int rangeY = (this.positionY < posY)? 7 : 0;           
         
         while (i != rangeX && j != rangeY) {
-            i+=caminhoX; j+=caminhoY;
-            // Apenas não está matando inimigos, acoplar com fogoAmigo() e retornar verdadeiro.            
-            if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return false;
+            i+=caminhoX; j+=caminhoY;                   
+            if (!((i == posX) && (j == posY))) if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return false;
+            if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
             if (i == posX && j == posY) return true;            
         }
         return false;
