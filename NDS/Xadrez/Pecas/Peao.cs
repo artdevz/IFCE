@@ -17,7 +17,7 @@ class Peao {
     public Peao(bool isBranco, bool isInicio) {
         this.isBranco = isBranco;
         this.isMovido = false;
-        icon = (isBranco)? "\u265f" : "\u2659";
+        icon = isBranco? "\u265f" : "\u2659";
         
         if ((isBranco == true) && (isInicio == true)) {
             positionX = quantidadeBranco;
@@ -35,26 +35,26 @@ class Peao {
     }
 
     // Métodos:
-    public void moverPeao(Boolean isBranco, int posX, int posY) {
+    public void moverPeao(bool isBranco, int posX, int posY) {
         if (Rodada.regraGeral(posX, posY) == false) Console.WriteLine("[ERRO]: Posição Inválida.");
 
         // Regra de Alcance:        
         if (movimentoNoAlcance(posX, posY) == true) {
             Console.WriteLine("Movimento Permitido.");
+            this.isMovido = true;
             
             // Alterar Tabuleiro:
             Tabuleiro.setMatrizDoTabuleiro(this.positionX, this.positionY, posX, posY, icon);
             this.positionX = posX;
             this.positionY = posY;
 
-        } 
+        }
+        /*  Para evitar IfElse: usar mover() como boolean, return true pra permitido e false para proíbido 
+            Também ajuda na condição de passar para a próxima vez ou continuar na vez do jogador
+        */
         else {
             Console.WriteLine("Movimento Proíbido.");
-        }         
-        
-        // fogoAmigo() precisa ser implementado
-        
-        // Regra de Ataque:            
+        }       
     
     }
 
@@ -62,21 +62,11 @@ class Peao {
 
         int i = this.positionX; int j = this.positionY;
         int passoY = (isBranco == true)? -1 : 1;
-
-        if ( (Math.Abs(posY - j) == 2) && (i == posX) && (isMovido == false) ) {
-            passoY++;
-            this.isMovido = true;
-        }
-        
+        if ( (Math.Abs(posY - j) == 2) && (i == posX) && (isMovido == false) ) passoY+=passoY;
         if ( (i == posX) && ( (j+=passoY) == posY) ) return true;
-        return true;
+        return false;
 
     }   
-    
-    // Acoplar com fogoAmigo()
-    public bool isMatar() {
-        return true;
-    }    
     
     // GettersAndSetters:
 
