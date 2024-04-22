@@ -52,15 +52,16 @@ class Rei {
         }
     }
 
-    public bool movimentoNoAlcance(int posX, int posY) {     
+    public bool movimentoNoAlcance(int posX, int posY) {
         
         int i = this.positionX; int j = this.positionY;        
         int caminhoX = (this.positionX == posX)? 0 : ((this.positionX < posX)? 1 : -1);
-        int caminhoY = (this.positionY == posY)? 0 : ((this.positionY < posY)? 1 : -1);           
-        
+        int caminhoY = (this.positionY == posY)? 0 : ((this.positionY < posY)? 1 : -1);  
         i+=caminhoX; j+=caminhoY;
+
+        if (i != posX || j != posY) return false;
+        if ( i == posX && j == posY && (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) == "[ ]") ) return true;                   
         if (Tabuleiro.getEntradaDaMatrizDoTabuleiro(i, j) != "[ ]") return (Rodada.fogoAmigo(this.isBranco, posX, posY) == true)? false : true;
-        if (i == posX && j == posY) return true;                   
         
         return false;
     }
